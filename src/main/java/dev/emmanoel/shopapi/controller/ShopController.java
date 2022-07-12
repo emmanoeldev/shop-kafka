@@ -3,6 +3,7 @@ package dev.emmanoel.shopapi.controller;
 import dev.emmanoel.shopapi.domain.Shop;
 import dev.emmanoel.shopapi.domain.ShopItem;
 import dev.emmanoel.shopapi.domain.dto.ShopDto;
+import dev.emmanoel.shopapi.kafka.KafkaClient;
 import dev.emmanoel.shopapi.repository.ShopRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +18,7 @@ import java.util.stream.Collectors;
 @RequestMapping("/shop")
 public class ShopController {
 
+    private final KafkaClient kafkaClient;
     private final ShopRepository shopRepository;
 
     @GetMapping
@@ -37,6 +39,8 @@ public class ShopController {
         for (ShopItem shopItem : shop.getItems()) {
             shopItem.setShop(shop);
         }
-        return ShopDto.convert(shopRepository.save(shop));
+        final ShopDto shopDtoSaved = ShopDto.convert(shopRepository.save(shop));
+        kafkaClient.sendMessage(shopDto);
+        return shopDtoSaved;
     }
 }
