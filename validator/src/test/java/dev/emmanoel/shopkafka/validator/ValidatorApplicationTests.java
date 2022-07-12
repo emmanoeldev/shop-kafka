@@ -1,4 +1,4 @@
-package dev.emmanoel.shopkrafka.validator;
+package dev.emmanoel.shopkafka.validator;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
