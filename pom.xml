@@ -19,7 +19,8 @@
     <packaging>pom</packaging>
 
     <modules>
-       <module>api</module>
+        <module>api</module>
+        <module>validator</module>
     </modules>
 
     <properties>
