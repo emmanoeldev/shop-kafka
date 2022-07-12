@@ -12,10 +12,15 @@
     </parent>
 
     <groupId>dev.emmanoel</groupId>
-    <artifactId>shop-api</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>shop-api</name>
-    <description>shop-api</description>
+    <artifactId>shopkafka</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <name>shopkafka</name>
+    <description>shopkafka</description>
+    <packaging>pom</packaging>
+
+    <modules>
+       <module>api</module>
+    </modules>
 
     <properties>
         <java.version>17</java.version>
@@ -56,23 +61,4 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>${project.parent.version}</version>
-                <configuration>
-                    <excludes>
-                        <exclude>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
-
 </project>
